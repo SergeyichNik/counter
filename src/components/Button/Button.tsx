@@ -3,15 +3,11 @@ import React from "react";
 type PropsType = {
     name: string,
     isDisabled: boolean,
-    onChangeValue: (name: string) => void
+    callBack: () => void
 }
 
 export const Button = (props: PropsType) => {
-    const {name, isDisabled, onChangeValue} = props
-
-    const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-        onChangeValue(e.currentTarget.name)
-    }
+    const {name, isDisabled, callBack} = props
 
     const BtnStyle = {
         margin: '0 5px 20px 5px',
@@ -27,6 +23,5 @@ export const Button = (props: PropsType) => {
 
     return <button style={BtnStyle}
                    disabled={isDisabled}
-                   name={name}
-                   onClick={onClickHandler}>{name.toUpperCase()}</button>
+                   onClick={callBack}>{name.toUpperCase()}</button>
 }

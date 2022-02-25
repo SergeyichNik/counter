@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import classes from './App.module.css';
 import {Board} from "./components/Board/Board";
 import {Button} from "./components/Button/Button";
@@ -16,24 +15,14 @@ function App() {
     const [value, setValue] = useState(minValue)
 
     const buttonsKit = [
-        {name: 'inc', isDisabled: value >= maxValue},
-        {name: 'reset', isDisabled: value === minValue}
+        {name: 'inc', isDisabled: value >= maxValue, callBack: () => setValue(value + countStep)},
+        {name: 'reset', isDisabled: value === minValue,callBack: () => setValue(minValue)},
+        {name: 'dec', isDisabled: value >= maxValue, callBack: () => setValue(value - countStep)},
     ]
-
-    const onChangeValue = (name: string) => {
-        switch (name) {
-            case 'inc':
-                setValue(value + countStep);
-                break;
-            case 'reset':
-                setValue(minValue);
-                break;
-        }
-    }
 
     const buttons = buttonsKit.map((item, index) => {
         return (
-            <Button key={index} onChangeValue={onChangeValue} {...item}/>
+            <Button key={index}   {...item}/>
         )
     })
 
