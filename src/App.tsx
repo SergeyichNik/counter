@@ -30,22 +30,29 @@ export const  App = () => {
     let countStep = options[2].value
 
     const getFromLS = () => {
-        setOptions(options.map<any>((item) => {
+        options.map(item => {
             let newItem = localStorage.getItem(item.name)
             if (newItem) {
                 let newValue = JSON.parse(newItem)
                 setOptions([...options, {...item, value: newValue}])
             }
-        }))
+        })
     }
 
-    // useEffect(() => {
-    //     getFromLS()
-    // },[])
+    useEffect(() => {
+        getFromLS()
+    },[])
 
     const optionsValueChange = (name: string, value: any) => {
-        setOptions(options.map(item => item.name === name ? {...item, value: value} : item))
-            setToLS(name, value)
+        setOptions(options.map<any>((item) => {
+            if (item.name === name) {
+                setToLS(item.name, item.value)
+                return {...item, value: value}
+            } else {
+                return item
+            }
+        }))
+            // setToLS(name, value)
     }
 
     const [value, setValue] = useState(minValue)
