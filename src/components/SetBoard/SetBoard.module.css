@@ -1,0 +1,32 @@
+.setBoardStyle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
+    height: 100px;
+    margin: 20px 20px;
+    background-color: gray;
+    font-family: Calibri;
+    font-size: 17px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px black;
+    border-radius: 8px;
+    color: black;
+    box-shadow: 2px 2px 5px inset;
+}
+
+.values {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.set {
+    font-size: 12px;
+}
+
+.setItems {
+    display: flex;
+    flex-direction: row;
+}
